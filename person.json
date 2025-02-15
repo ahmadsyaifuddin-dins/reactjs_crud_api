@@ -1,0 +1,22 @@
+{
+  "person": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "email": "john@gmail.com",
+      "age": 25
+    },
+    {
+      "id": "2",
+      "name": "Ahmad Syaifuddin",
+      "email": "ahmadsyaifuddins@gmail.com",
+      "age": 20
+    },
+    {
+      "id": "4be6",
+      "name": "Udins",
+      "email": "udins@gmail.com",
+      "age": 21
+    }
+  ]
+}
