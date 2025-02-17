@@ -126,7 +126,7 @@ function App() {
                   Usia
                 </label>
                 <input
-                  type="number"
+                  type="number" min="0" max="200"
                   value={age}
                   onChange={(e) => setAge(e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
@@ -160,43 +160,66 @@ function App() {
           <div className="px-6 py-4 border-b border-gray-200">
             <h2 className="text-xl font-semibold text-gray-800">Daftar Pengguna</h2>
           </div>
-          <ul className="divide-y divide-gray-200">
-            {data.map((item, index) => (
-              <li key={index} className="px-6 py-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center">
-                    <div className="flex-shrink-0">
-                      <User className="h-8 w-8 text-gray-400" />
-                    </div>
-                    <div className="ml-4">
-                      <h3 className="text-sm font-medium text-gray-900">
-                        {item.name}
-                      </h3>
-                      <div className="text-sm text-gray-500">
-                        <span>{item.email}</span>
-                        <span className="mx-2">•</span>
-                        <span>{item.age} Tahun</span>
+          <div className="overflow-x-auto">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50">
+              <tr>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Nama
+                </th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Email
+                </th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Usia
+                </th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Aksi
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {data.map((item, index) => (
+                <tr key={index}>
+                  <td className="px-6 py-4">
+                    <div className="flex items-center">
+                      <div className="flex-shrink-0">
+                        <User className="h-8 w-8 text-gray-400" />
+                      </div>
+                      <div className="ml-4">
+                        <h3 className="text-sm font-medium text-gray-900">
+                          {item.name}
+                        </h3>
                       </div>
                     </div>
-                  </div>
-                  <div className="flex space-x-2">
-                    <button
-                      onClick={() => editData(item.id)}
-                      className="inline-flex items-center p-2 text-sm font-medium text-blue-600 hover:text-blue-800 focus:outline-none"
-                    >
-                      <Edit2 className="w-4 h-4" />
-                    </button>
-                    <button
-                      onClick={() => deleteData(item.id)}
-                      className="inline-flex items-center p-2 text-sm font-medium text-red-600 hover:text-red-800 focus:outline-none"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
+                  </td>
+                  <td className="px-6 py-4">
+                    <div className="text-sm text-gray-500">{item.email}</div>
+                  </td>
+                  <td className="px-6 py-4">
+                    <div className="text-sm text-gray-500">{item.age} Tahun</div>
+                  </td>
+                  <td className="px-6 py-4">
+                    <div className="flex space-x-2">
+                      <button
+                        onClick={() => editData(item.id)}
+                        className="inline-flex items-center p-2 text-sm font-medium text-blue-600 hover:text-blue-800 focus:outline-none"
+                      >
+                        <Edit2 className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => deleteData(item.id)}
+                        className="inline-flex items-center p-2 text-sm font-medium text-red-600 hover:text-red-800 focus:outline-none"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          </div>
         </div>
       </div>
     </div>
